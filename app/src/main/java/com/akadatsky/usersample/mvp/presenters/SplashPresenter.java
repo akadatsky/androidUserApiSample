@@ -3,7 +3,7 @@ package com.akadatsky.usersample.mvp.presenters;
 import android.content.Context;
 import android.content.Intent;
 
-import com.akadatsky.usersample.LoginActivity;
+import com.akadatsky.usersample.ui.activities.LoginActivity;
 import com.akadatsky.usersample.mvp.views.SplashView;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
@@ -34,4 +34,8 @@ public class SplashPresenter extends MvpPresenter<SplashView> {
         mContext.startActivity(intent);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 }

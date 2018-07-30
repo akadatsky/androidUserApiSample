@@ -1,4 +1,4 @@
-package com.akadatsky.usersample;
+package com.akadatsky.usersample.ui.activities;
 
 import android.content.Context;
 import android.icu.lang.UScript;
@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.view.LayoutInflater;
 import android.widget.Toast;
 
+import com.akadatsky.usersample.R;
 import com.akadatsky.usersample.api.RetrofitClient;
 import com.akadatsky.usersample.model.User;
 import com.akadatsky.usersample.model.UserList;
@@ -39,10 +40,10 @@ public class UserListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
 
-//        List<User> users = new ArrayList<>();
-//        users.add(new User("Ivan"));
-//        users.add(new User("Oleg"));
-//        users.add(new User("Alex"));
+        List<User> users = new ArrayList<>();
+        users.add(new User("Ivan"));
+        users.add(new User("Oleg"));
+        users.add(new User("Alex"));
 
         mInflater = LayoutInflater.from(this);
 
@@ -50,8 +51,8 @@ public class UserListActivity extends AppCompatActivity {
         mAdapter = new UserAdapter(this);
         listView.setAdapter(mAdapter);
 
-
-        fetchUsers();
+        //fetchUsers();
+        fillList(users);
     }
 
     private void fetchUsers() {

@@ -1,4 +1,4 @@
-package com.akadatsky.usersample;
+package com.akadatsky.usersample.ui.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.akadatsky.usersample.R;
 
 public class LoginActivity extends AppCompatActivity {
 

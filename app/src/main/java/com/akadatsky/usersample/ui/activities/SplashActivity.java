@@ -1,9 +1,9 @@
-package com.akadatsky.usersample;
+package com.akadatsky.usersample.ui.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.akadatsky.usersample.R;
 import com.akadatsky.usersample.mvp.presenters.SplashPresenter;
 import com.akadatsky.usersample.mvp.views.SplashView;
 import com.arellomobile.mvp.MvpAppCompatActivity;
