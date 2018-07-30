@@ -1,7 +1,6 @@
 package com.akadatsky.usersample.ui.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,8 +8,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.akadatsky.usersample.R;
+import com.akadatsky.usersample.mvp.presenters.LoginPresenter;
+import com.akadatsky.usersample.mvp.views.LoginView;
+import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends MvpAppCompatActivity implements LoginView {
+
+    @InjectPresenter
+    LoginPresenter mLoginPresenter;
 
     private EditText loginView;
     private EditText passwordView;
@@ -27,44 +33,28 @@ public class LoginActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validate();
+                String login = loginView.getText().toString();
+                String password = passwordView.getText().toString();
+                mLoginPresenter.validate(login, password);
             }
         });
-
-
     }
 
-    private void validate() {
-        String login = loginView.getText().toString();
-        String password = passwordView.getText().toString();
-
-        if (login == null || login.isEmpty()) {
-            loginView.setError(getString(R.string.empty_login));
-            return;
-        }
-
-        if (password == null || password.isEmpty()) {
-            passwordView.setError("Password can't be empty");
-            return;
-        }
-
-        if (password.length() < 6) {
-            passwordView.setError("Password should be 6+ char");
-            return;
-        }
-
-        if (login.equals("admin") && password.equals("123456")) {
-            openNext();
-            finish();
-        } else {
-            Toast.makeText(this, "Wrong login/password", Toast.LENGTH_SHORT).show();
-        }
-
-    }
-
-    private void openNext() {
+    @Override
+    public void openNext() {
         Intent intent = new Intent(this, UserListActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void loginFailed() {
+        Toast.makeText(this, "Wrong login/password", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showFormError(String loginError, String passwordError) {
+        loginView.setError(loginError);
+        passwordView.setError(passwordError);
     }
 
 }
