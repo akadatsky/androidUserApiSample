@@ -31,5 +31,4 @@ dependencies {
     //implementation 'com.arello-mobile:moxy-android:1.4.5'
     implementation 'com.arello-mobile:moxy-app-compat:1.5.5'
     annotationProcessor 'com.arello-mobile:moxy-compiler:1.5.5'
-
 }
