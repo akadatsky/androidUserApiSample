@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">UserSample</string>
+    <string name="next">NEXT</string>
+    <string name="login">login</string>
+    <string name="password">password</string>
+    <string name="empty_login">Login can\'t be empty</string>
+    <string name="add">ADD</string>
+</resources>

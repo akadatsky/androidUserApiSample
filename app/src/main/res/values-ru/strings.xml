@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">UserSample</string>
+    <string name="next">Далее</string>
+    <string name="login">Лоигн</string>
+    <string name="password">Пароль</string>
+    <string name="empty_login">Логин не может быть пустым</string>
+</resources>
