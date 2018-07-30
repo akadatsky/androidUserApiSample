@@ -8,11 +8,17 @@ import com.akadatsky.usersample.mvp.presenters.SplashPresenter;
 import com.akadatsky.usersample.mvp.views.SplashView;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
 
 public class SplashActivity extends MvpAppCompatActivity implements SplashView {
 
     @InjectPresenter
     SplashPresenter mSplashPresenter;
+
+    @ProvidePresenter
+    SplashPresenter provideSplashPresenter() {
+        return new SplashPresenter(this.getApplicationContext());
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
