@@ -4,28 +4,24 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class SplashActivity extends AppCompatActivity {
+import com.akadatsky.usersample.mvp.presenters.SplashPresenter;
+import com.akadatsky.usersample.mvp.views.SplashView;
+import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.arellomobile.mvp.presenter.InjectPresenter;
+
+public class SplashActivity extends MvpAppCompatActivity implements SplashView {
+
+    @InjectPresenter
+    SplashPresenter mSplashPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                openNext();
-                finish();
-            }
-        }).start();
     }
 
-    private void openNext() {
+    @Override
+    public void openNext() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
