@@ -18,19 +18,6 @@ public class UserListPresenter extends MvpPresenter<UserListView> {
         fetchUsers();
     }
 
-    /*
-    // crash: io.reactivex.exceptions.OnErrorNotImplementedException
-    private void fetchUsers() {
-        RetrofitClient.getApiService()
-                .getUsers()
-                .doOnSuccess(response -> getViewState().fillList(response.getUsers()))
-                .doOnError(throwable -> getViewState().showError(R.string.request_failed))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe();
-    }
-    */
-
     @SuppressLint("CheckResult")
     private void fetchUsers() {
         RetrofitClient.getApiService()
