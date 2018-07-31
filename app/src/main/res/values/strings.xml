@@ -5,4 +5,5 @@
     <string name="password">password</string>
     <string name="empty_login">Login can\'t be empty</string>
     <string name="add">ADD</string>
+    <string name="request_failed">Request failed</string>
 </resources>

@@ -1,7 +1,6 @@
 package com.akadatsky.usersample.mvp.presenters;
 
-import android.util.Log;
-
+import com.akadatsky.usersample.R;
 import com.akadatsky.usersample.api.RetrofitClient;
 import com.akadatsky.usersample.mvp.views.UserListView;
 import com.arellomobile.mvp.InjectViewState;
@@ -21,7 +20,7 @@ public class UserListPresenter extends MvpPresenter<UserListView> {
         RetrofitClient.getApiService()
                 .getUsers()
                 .doOnSuccess(response -> getViewState().fillList(response.getUsers()))
-                .doOnError(throwable -> Log.i("asdf", "fail", throwable))
+                .doOnError(throwable -> getViewState().showError(R.string.request_failed))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe();

@@ -2,6 +2,7 @@ package com.akadatsky.usersample.ui.activities;
 
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.akadatsky.usersample.R;
 import com.akadatsky.usersample.model.User;
@@ -34,6 +35,11 @@ public class UserListActivity extends MvpAppCompatActivity implements UserListVi
     public void fillList(List<User> users) {
         mAdapter.clear();
         mAdapter.addAll(users);
+    }
+
+    @Override
+    public void showError(int textId) {
+        Toast.makeText(this, textId, Toast.LENGTH_LONG).show();
     }
 
 }

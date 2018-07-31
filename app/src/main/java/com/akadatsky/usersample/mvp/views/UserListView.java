@@ -9,4 +9,6 @@ public interface UserListView extends MvpView {
 
     void fillList(List<User> users);
 
+    void showError(int textId);
+
 }
