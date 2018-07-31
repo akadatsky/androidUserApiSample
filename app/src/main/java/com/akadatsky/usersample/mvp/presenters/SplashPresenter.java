@@ -31,6 +31,7 @@ public class SplashPresenter extends MvpPresenter<SplashView> {
 
     private void openNext() {
         Intent intent = new Intent(mContext, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(intent);
     }
 
