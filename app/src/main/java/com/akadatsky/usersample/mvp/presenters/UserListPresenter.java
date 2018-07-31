@@ -1,5 +1,7 @@
 package com.akadatsky.usersample.mvp.presenters;
 
+import android.annotation.SuppressLint;
+
 import com.akadatsky.usersample.R;
 import com.akadatsky.usersample.api.RetrofitClient;
 import com.akadatsky.usersample.mvp.views.UserListView;
@@ -16,6 +18,8 @@ public class UserListPresenter extends MvpPresenter<UserListView> {
         fetchUsers();
     }
 
+    /*
+    // crash: io.reactivex.exceptions.OnErrorNotImplementedException
     private void fetchUsers() {
         RetrofitClient.getApiService()
                 .getUsers()
@@ -24,6 +28,18 @@ public class UserListPresenter extends MvpPresenter<UserListView> {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe();
+    }
+    */
+
+    @SuppressLint("CheckResult")
+    private void fetchUsers() {
+        RetrofitClient.getApiService()
+                .getUsers()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        response -> getViewState().fillList(response.getUsers()),
+                        throwable -> getViewState().showError(R.string.request_failed));
     }
 
 }
